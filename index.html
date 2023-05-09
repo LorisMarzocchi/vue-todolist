@@ -10,15 +10,37 @@
 </head>
 
 <body>
-    <div id="app"class="container">
-        <div>
-            <input type="text" v-model="newItem" />
-            <button @click="addItem">Aggiungi</button>
+    <div id="app">
+        <div class="container">
+
+            <h2>Lista della spesa</h2>
+      
+            <div>
+              <input @keyup.enter="addItem" type="text" v-model="newItem" />
+              <button @click="addItem">Aggiungi</button>
+              <div v-show="inputError" class="error">
+
+                  <h4>Almeno 5 caratteri</h4>
+              </div>
+            </div>
+            <div class="container-items">
+                <ul>
+                    <li v-if="todos.length == 0">Fine lista!</li>
+                    <li v-for="(todo, i) in todos" @click="done(i)" :class="{'done': todo.done}">
+                        {{todo.text}}
+                        <button @click="removeItem">Rimuovi</button>
+                
+                    </li>
+                </ul>
+
+            </div>
         </div>
+ 
     </div>
 
     <!-- IMPORT VUE JS -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="assets/script.js"></script>
 </body>
 
 </html>

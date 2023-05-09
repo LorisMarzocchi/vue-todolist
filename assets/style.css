@@ -6,9 +6,25 @@
 
 
 .container{
+    padding: 100px;
     margin: auto;
     height: 500px;
     width: 500px;
     background-color: lightgray;
 
+}
+ul {
+    list-style: none;
+    cursor: pointer;
+    
+}
+li:hover{
+    cursor: pointer;
+}
+.error{
+    color: red;
+}
+    
+.done{
+    text-decoration: line-through;
 }

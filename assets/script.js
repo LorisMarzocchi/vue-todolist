@@ -18,10 +18,63 @@ Bonus:
 
 const app = Vue.createApp({
     data() {
-        return {
-            
+      return {
+        todos: [
+          {
+              text: "Comprare il latte",
+              done: false, 
+          },
+          {
+              text: "Comprare i Pomodori",
+              done: true,
+          },
+          {
+              text: "Comprare le uova",
+              done: false,
+          },
+          {
+            text: "Comprare i Pomodori",
+            done: true,
+          },
+          {
+            text: "Comprare i Pomodori",
+            done: true,
+          },
+        ],
+        newItem: "",
+        inputError: false,
+
+
+      };
+    },
+    methods: {
+      addItem() {
+        let cleaninput = this.newItem.trim();
+        if (cleaninput.length >= 5) {
+          this.todos.unshift({
+
+            text: this.newItem,
+            done: false,
+
+          });
+          this.newItem = "";
+          this.inputError = false;
+          
         }
+        else{
+          this.inputError = true;
+        }
+      },
+      done(i){
+        this.todos[i].done = !this.todos[i].done;
+      },
+      removeItem(i){
+        this.todos.splice(i,1)
+      },
+        
+     
+
+
     },
 });
-
-app.mount("#app");
+app.mount('#app');
